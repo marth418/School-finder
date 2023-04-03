@@ -4,7 +4,7 @@ import pandas as pd
 
 
 # --- Load the dataframe ---
-df = pd.read_csv('../new_df1.csv')
+df = pd.read_csv('new_df1.csv')
 
 st.set_page_config(
     page_title="School Finder App",
@@ -60,3 +60,4 @@ hide_st_style = """
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
+
