@@ -14,7 +14,7 @@ st.set_page_config(page_title="School Information", page_icon=":information:", l
 # set the title of the app
 st.title("School Information")
 
-df = pd.read_csv('../../../../Desktop/Data projects/Project 2/Webpage/new_df1.csv')
+df = pd.read_csv(r'../../../Desktop/Data projects/Project 2/Webpage/new_df1.csv')
 df['Telephone'] = df['Telephone'].apply(str)
 
 # Create a dropdown to select an official institution name

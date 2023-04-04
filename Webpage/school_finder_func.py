@@ -1,6 +1,6 @@
 import pandas as pd
 
-data = pd.read_csv('../../../Desktop/Data projects/Project 2/Webpage/new_data.csv')
+data = pd.read_csv(r'../../../Desktop/Data projects/Project 2/Webpage/new_data.csv')
 
 # Split the suburb coordinates
 data[['suburb_Latitude', 'suburb_longitude']] = data['suburb_coordinates'].str.split(', ', expand=True)

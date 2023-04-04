@@ -4,7 +4,7 @@ import pandas as pd
 
 
 # --- Load the dataframe ---
-df = pd.read_csv('new_df1.csv')
+df = pd.read_csv(r'../../../Desktop/Data projects/Project 2/Webpage/new_df1.csv')
 
 st.set_page_config(
     page_title="School Finder App",
