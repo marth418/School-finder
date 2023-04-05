@@ -2,16 +2,32 @@ import streamlit as st
 from streamlit_folium import folium_static
 import pandas as pd
 
-
-# --- Load the dataframe ---
-df = pd.read_csv(r'../../../Desktop/Data projects/Project 2/Webpage/new_df1.csv')
-
 st.set_page_config(
     page_title="School Finder App",
     page_icon=":student:",
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+# --- Load the dataframe ---
+df = pd.read_csv(r'C:/Users/Lenovo/OneDrive/Documents/GitHub/School-finder/Webpage/new_data.csv')
+
+# Split the suburb coordinates
+df[['suburb_Latitude', 'suburb_longitude']] = df['suburb_coordinates'].str.split(', ', expand=True)
+
+# remove suburb coordinates column
+df = df.drop(['suburb_coordinates','Town_Suburb'], axis=1)
+
+# Strip unwanted characters
+df['suburb_Latitude'] = df['suburb_Latitude'].str[1:]
+df['suburb_longitude'] = df['suburb_longitude'].str[:-1]
+
+# Change the town coordinates datatype from object to float
+df['suburb_Latitude'] = pd.to_numeric(df['suburb_Latitude'], errors='coerce')
+df['suburb_longitude'] = pd.to_numeric(df['suburb_longitude'], errors='coerce')
+
+df = df.apply(lambda x: x.str.lower() if x.dtype == "object" else x)
+df = df.apply(lambda x: x.str.title() if x.dtype == "object" else x)
 
 
 # set the title of the app

@@ -1,18 +1,17 @@
 import pandas as pd
+from sklearn.neighbors import BallTree
 
-data = pd.read_csv(r'../../../Desktop/Data projects/Project 2/Webpage/new_data.csv')
+data = pd.read_csv(r'C:/Users/Lenovo/OneDrive/Documents/GitHub/School-finder/Webpage/new_data.csv')
 
 # Split the suburb coordinates
 data[['suburb_Latitude', 'suburb_longitude']] = data['suburb_coordinates'].str.split(', ', expand=True)
 
 # remove suburb coordinates column
 data = data.drop(['suburb_coordinates','Town_Suburb'], axis=1)
-data.columns
 
 # Strip unwanted characters
 data['suburb_Latitude'] = data['suburb_Latitude'].str[1:]
 data['suburb_longitude'] = data['suburb_longitude'].str[:-1]
-data.head()
 
 # Change the town coordinates datatype from object to float
 data['suburb_Latitude'] = pd.to_numeric(data['suburb_Latitude'], errors='coerce')
@@ -20,8 +19,6 @@ data['suburb_longitude'] = pd.to_numeric(data['suburb_longitude'], errors='coerc
 
 data = data.apply(lambda x: x.str.lower() if x.dtype == "object" else x)
 data = data.apply(lambda x: x.str.title() if x.dtype == "object" else x)
-
-from sklearn.neighbors import BallTree
 
 X = data[['GIS_Lat', 'GIS_Long']].values
 tree = BallTree(X, leaf_size=2)
