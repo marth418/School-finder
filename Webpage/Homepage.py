@@ -1,6 +1,6 @@
 import streamlit as st
 from streamlit_folium import folium_static
-import pandas as pd
+import pandas as pd 
 
 st.set_page_config(
     page_title="School Finder App",
@@ -10,7 +10,7 @@ st.set_page_config(
 )
 
 # --- Load the dataframe ---
-df = pd.read_csv(r'C:/Users/Lenovo/OneDrive/Documents/GitHub/School-finder/Webpage/new_data.csv')
+df = pd.read_csv("Webpage/new_data.csv")
 
 # Split the suburb coordinates
 df[['suburb_Latitude', 'suburb_longitude']] = df['suburb_coordinates'].str.split(', ', expand=True)
