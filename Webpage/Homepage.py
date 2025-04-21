@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit_folium import folium_static
+from streamlit_folium import st_folium
 import pandas as pd 
 
 st.set_page_config(
@@ -10,7 +11,7 @@ st.set_page_config(
 )
 
 # --- Load the dataframe ---
-df = pd.read_csv("Webpage/new_data.csv")
+df = pd.read_csv("new_data.csv")
 
 # Split the suburb coordinates
 df[['suburb_Latitude', 'suburb_longitude']] = df['suburb_coordinates'].str.split(', ', expand=True)
@@ -65,7 +66,7 @@ from maps import get_closest_schools
 map = get_closest_schools(suburb, df)
 
 # Display the map in the Streamlit app
-folium_static(map, width=1400, height=300)
+st_folium(map, width=1400, height=300)
 
 # ---- HIDE STREAMLIT STYLE ----
 hide_st_style = """
