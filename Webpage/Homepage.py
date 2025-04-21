@@ -11,7 +11,7 @@ st.set_page_config(
 )
 
 # --- Load the dataframe ---
-df = pd.read_csv("new_data.csv")
+df = pd.read_csv('Webpage/new_data.csv')
 
 # Split the suburb coordinates
 df[['suburb_Latitude', 'suburb_longitude']] = df['suburb_coordinates'].str.split(', ', expand=True)
