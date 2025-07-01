@@ -3,7 +3,7 @@ import streamlit as st
 from geopy.distance import geodesic
 import folium
 
-data = pd.read_csv('Webpage/new_data.csv')
+data = pd.read_csv('new_data.csv')
 
 # Split the suburb coordinates
 data[['suburb_Latitude', 'suburb_longitude']] = data['suburb_coordinates'].str.split(', ', expand=True)
