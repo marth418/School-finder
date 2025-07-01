@@ -3,6 +3,7 @@ from sklearn.utils import murmurhash
 from streamlit_folium import folium_static
 from streamlit_folium import st_folium
 import pandas as pd 
+import os
 
 st.set_page_config(
     page_title="School Finder App",
@@ -12,7 +13,7 @@ st.set_page_config(
 )
 
 # --- Load the dataframe ---
-df = pd.read_csv('new_data.csv')
+df = pd.read_csv(os.path.join(os.path.dirname(__file__), 'new_data.csv'))
 
 # Split the suburb coordinates
 df[['suburb_Latitude', 'suburb_longitude']] = df['suburb_coordinates'].str.split(', ', expand=True)
