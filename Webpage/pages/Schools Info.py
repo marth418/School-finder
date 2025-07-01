@@ -11,12 +11,10 @@ from streamlit_folium import folium_static
 
 st.set_page_config(page_title="School Information", page_icon=":information:", layout="wide")
 
-pip install streamlit
-
 # set the title of the app
 st.title("School Information")
 
-df = pd.read_csv("Webpage/new_data.csv")
+df = pd.read_csv('new_data.csv')
 
 # Split the suburb coordinates
 df[['suburb_Latitude', 'suburb_longitude']] = df['suburb_coordinates'].str.split(', ', expand=True)
